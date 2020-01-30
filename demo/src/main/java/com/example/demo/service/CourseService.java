@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Course;
-import com.example.demo.model.Topic;
 import com.example.demo.respository.CourseRepository;
 
 @Service
