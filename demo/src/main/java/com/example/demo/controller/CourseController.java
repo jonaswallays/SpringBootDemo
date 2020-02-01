@@ -16,8 +16,12 @@ import com.example.demo.service.CourseService;
 @RestController
 public class CourseController {
 	
-	@Autowired
 	private CourseService courseService;	
+	
+	@Autowired
+	public CourseController(CourseService courseService) {
+		this.courseService = courseService;
+	}
 	
 	@RequestMapping("/courses")
 	public List<Course> getAllCourses(){

@@ -16,8 +16,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	
-	@Autowired
 	DataSource dataSource;
+	
+	@Autowired
+	public SecurityConfiguration(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
@@ -42,6 +46,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 			        .antMatchers("/user").hasAnyRole("USER", "ADMIN")
 					.antMatchers("/").permitAll()
 					.and().formLogin();
+		http.csrf().disable();
 	}
 
 }

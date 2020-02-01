@@ -15,8 +15,12 @@ import com.example.demo.service.TopicService;
 @RestController
 public class TopicController {
 	
-	@Autowired
 	private TopicService topicService;	
+	
+	@Autowired
+	public TopicController(TopicService topicService) {
+		this.topicService = topicService;
+	}
 	
 	@RequestMapping("/topics")
 	public List<Topic> getAllTopics(){
