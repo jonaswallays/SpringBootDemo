@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,12 @@ public class TopicService {
 	}
 	
 	public Topic getTopic(String id) {
-		return topicRepository.findById(id).get();
+		Optional<Topic> optional = topicRepository.findById(id);
+		if(optional.isPresent()) {
+			return optional.get();
+		}else {
+			return new Topic("Unknown Topic", "Unknown", "Topic doesn't exist!");
+		}
 	}
 
 	public void addTopic(Topic topic) {
